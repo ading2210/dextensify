@@ -2,40 +2,98 @@
 <html>
   <head>
     <title>LTMEAT on generic webpages</title>
+    <style>
+      * {
+        font-family: Sans-serif;
+        color: #d4d3da;
+      }
+      a {
+        color: #bc7ae6;
+      }
+      a:hover {
+        color: #a64ede;
+      }      
+      pre, code {
+        font-family: monospace;
+        background-color: #241e3a;
+        padding: 4px;
+        border-radius: 4px;
+        border: 1px solid #3a344e;
+        overflow-x: auto;
+      }
+      pre {
+        padding: 8px;
+      }
+      pre code {
+        background-color: transparent;
+        border: none;
+        padding: 0px;
+      }
+      body {
+        background-color: #241e3a;
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+      }
+      button {
+        background-color: #a64ede;
+        padding: 6px;
+        padding-left: 8px;
+        padding-right: 8px;
+        border: transparent;
+        border-radius: 4px;
+      }
+      #main_div {
+        max-width: 800px;
+        object-fit: contain;
+
+        background-color: #2f2944;
+        border: 1px solid #3a344e;
+        border-radius: 8px;
+
+        padding: 4px;
+        padding-left: 16px;
+        padding-right: 16px;
+
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 16px;
+      }
+    </style>
     <script>
       let public_url = `{{public_url}}`;
 
       function create_iframes() {
-        let iframes = []
         for (let i=0; i<500; i++) {
           let iframe = document.createElement("iframe");
           iframe.src = public_url;
           iframe.style.width = iframe.style.height = "1px";
-          iframes.push(iframe);
           document.body.append(iframe);
         }
       }
     </script>
   </head>
   <body>
-    <h1>Simple Chrome Extension Disabler</h1>
-    <h2>Instructions</h2>
-    <ol>
-      <li>Open chrome://extensions</li>
-      <li>Go to the settings page for this extension: {{extension_name}}</li>
-      <li>Click the "create iframes" button.</li>
-      <li>Back on the chrome://extensions page, click the "allow access to file URLs" switch</li>
-      <li>Go back to this page and click the "create iframes" button a few times.</li>
-      <li>The extension should now be disabled.</li>
-    </ol>
-    <p>During this process, your Chromebook may freeze momentarily. This is normal, and it should resolve itself after a few seconds.</p>
-    <button onclick="create_iframes()">create iframes</button>
-    <hr>
-    <details>
-      <summary>
-        Made by <a href="https://ading.dev">ading2210</a>. This file is licensed under the MIT license.
-      </summary>
-      <pre>MIT License
+    <div id="main_div">
+      <h1 style="margin-top: 8px">Simple Chrome Extension Disabler</h1>
+      <h2>Instructions</h2>
+      <ol>
+        <li>Open chrome://extensions in a new tab. Keep this page open.</li>
+        <li>Go to the settings page for this extension: {{extension_name}}</li>
+        <li>On this page, click the "freeze extension" button.</li>
+        <li>Back on the chrome://extensions page, click on the "allow access to file URLs" switch.</li>
+        <li>Go back to this page and click the "freeze extension" button a few times.</li>
+        <li>The extension should now be disabled.</li>
+      </ol>
+      <p>During this process, your Chromebook may freeze momentarily. This is normal, and it should resolve itself after a few seconds.</p>
+      <button id="main_button" onclick="create_iframes()">Freeze Extension</button>
+      <br><br>
+      <hr>
+      <details>
+        <summary style="margin-bottom: 8px;">
+          Made by <a href="https://ading.dev">ading2210</a>. This file is licensed under the MIT license.
+        </summary>
+        <pre>MIT License
 Copyright (c) 2023 ading2210
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -55,6 +113,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</pre>
-    </details>
+      </details>  
+    </div>
   </body>
 </html>
