@@ -98,7 +98,6 @@
         catch (error) {
           let error_msg = error+"";
           return error_msg.includes("AbortError");
-          console.log(error);
         }
       }
       
@@ -132,7 +131,6 @@
             create_iframes(extension.url);
           }
           buttons_container.append(button);
-          console.log(extension);
         }
       }
 
