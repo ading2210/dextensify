@@ -75,17 +75,45 @@
         },
         "goguardian": {
           name: "Goguardian",
-          url: "chrome-extension://haldlgldplgnggkjaafhelgiaglafanh/youtube-injection.js"
+          url: "chrome-extension://haldlgldplgnggkjaafhelgiaglafanh/youtube_injection.js"
         },
-        "google_translate": {
-          name: "Google Translate (TEST ONLY)",
-          url: "chrome-extension://aapbdbdomjkkjkaonfhkkikfgjllcleb/options.html"
+        "lanschool": {
+          name: "LANSchool",
+          url: "chrome-extension://baleiojnjpgeojohhhfbichcodgljmnj/blocked.html"
         },
-        "google_dictionary": {
-          name: "Google Dictionary (TEST ONLY)",
-          url: "chrome-extension://mgijmajocgfcbeboacabfgobmjgjcoja/content.min.css"
+        "linewize": {
+          name: "Linewize",
+          url: "chrome-extension://ddfbkhpmcdbciejenfcolaaiebnjcbfc/background/assets/pages/default-blocked.html"
+        },
+        "blocksi": {
+          name: "Blocksi",
+          url: "chrome-extension://ghlpmldmjjhmdgmneoaibbegkjjbonbk/pages/blockPage.html"
+        },
+        "fortiguard": {
+          name: "Fortiguard",
+          url: "chrome-extension://igbgpehnbmhgdgjbhkkpedommgmfbeao/youtube_injection.js"
+        },
+        "cisco": {
+          name: "Cisco Umbrella",
+          url: "chrome-extension://jcdhmojfecjfmbdpchihbeilohgnbdci/blocked.html"
+        },
+        "contentkeeper": {
+          name: "ContentKeeper",
+          url: "chrome-extension://jdogphakondfdmcanpapfahkdomaicfa/img/ckauth19x.png"
+        },
+        "securlyclassroom": {
+          name: "Securly Classroom",
+          url: "chrome-extension://jfbecfmiegcjddenjhlbhlikcbfmnafd/notfound.html"
+        },
+        "hapara": {
+          name: "Hapara",
+          url: "chrome-extension://kbohafcopfpigkjdimdcdgenlhkmhbnc/blocked.html"
+        },
+        "iboss": {
+          name: "NetRef",
+          url: "chrome-extension://kmffehbidlalibfeklaefnckpidbodff/restricted.html"
         }
-      }
+      };
 
       async function check_url(url) {
         let controller = new AbortController();
@@ -152,7 +180,7 @@
       <h2>Instructions</h2>
       <ol>
         <li>Open chrome://extensions in a new tab. Keep this page open.</li>
-        <li>Go to the settings page for this extension: {{extension_name}}</li>
+        <li>Go to the settings page for the extension you want to disable.</li>
         <li>On this page, click the "freeze extension" button.</li>
         <li>Back on the chrome://extensions page, click on the "allow access to file URLs" switch.</li>
         <li>Go back to this page and click the "freeze extension" button a few times.</li>
