@@ -59,6 +59,7 @@
       }
       #buttons_container {
         display: flex;
+        flex-wrap: wrap;
         gap: 8px;
       }
     </style>
@@ -167,11 +168,27 @@
       }
 
       function create_iframes(public_url) {
-        for (let i=0; i<500; i++) {
+        let iframes = []
+        let iterations = 0;
+        
+        while (true) {
           let iframe = document.createElement("iframe");
-          iframe.src = public_url;
-          iframe.style.width = iframe.style.height = "1px";
           document.body.append(iframe);
+          iframes.push(iframe);
+
+          for (let i=0; i<50; i++) {
+            let subframe = document.createElement("iframe");
+            subframe.src = public_url;
+            subframe.style.width = subframe.style.height = "1px";
+            iframe.contentDocument.body.append(subframe);
+          }
+
+          while (iframes.length > Math.max(3, 10-iterations)) {
+            iframes[0].remove();
+            iframes.shift();
+          }
+
+          iterations++;
         }
       }
 
@@ -188,8 +205,8 @@
         <li>Go to the settings page for the extension you want to disable.</li>
         <li>On this page, click the "freeze extension" button.</li>
         <li>Back on the chrome://extensions page, click on the "allow access to file URLs" switch.</li>
-        <li>Go back to this page and click the "freeze extension" button a few times.</li>
-        <li>The extension should now be disabled.</li>
+        <li><s>Go back to this page and click the "freeze extension" button a few times.</s></li>
+        <li><s>The extension should now be disabled. For the effect to last, keep this page open.</s></li>
       </ol>
       <p>During this process, your Chromebook may hang momentarily. This is normal, and it should resolve itself after a few seconds.</p>
       <div id="buttons_container">
@@ -221,7 +238,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</pre>
-        <p style="font-size: 14px;"><i>Version 1.0r1</i></p>
+        <p style="font-size: 13px; text-align: right;"><i>Version 1.0r2</i></p>
       </details>
     </div>
   </body>
