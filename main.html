@@ -148,9 +148,14 @@
       async function main() {
         let detected = await detect_extensions();
         let buttons_container = from_id("buttons_container")
-        
-        if (detected.length === 0) {
+
+        if (!window.chrome) {
+          buttons_container.innerHTML = `<p><b>Error: You are not running a Chromium-based browser.</b></p>`;
+          return;
+        }
+        else if (detected.length === 0) {
           buttons_container.innerHTML = `<p><b>Error: No supported extensions detected.</b></p>`;
+          buttons_container.innerHTML += `<p style="margin-top: -16px;">If you want support for a specific extension added, please contact <code>allen@ading.dev</code>, and provide the extension ID and manifest.</p>`;
           return;
         }
         else {
@@ -184,7 +189,7 @@
             iframe.contentDocument.body.append(subframe);
           }
 
-          while (iframes.length > Math.max(1, 10-iterations)) {
+          while (iframes.length > Math.max(3, 10-iterations)) {
             iframes[0].remove();
             iframes.shift();
           }
@@ -239,7 +244,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</pre>
-        <p style="font-size: 13px; text-align: right;"><i>Version 1.0r4</i></p>
+        <p style="font-size: 13px; text-align: right;"><i>Version 1.0r5</i></p>
       </details>
     </div>
   </body>
