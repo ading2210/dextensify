@@ -7,6 +7,29 @@ For the exploit itself, visit one of the following links:
 
 An explanation is available on [my website](https://ading.dev/blog/posts/dextensify.html).
 
+## Supported Extensions:
+|Extension Name|Extension ID|
+|--------------|------------|
+|Securly|`joflmkccibkooplaeoinecjbmdebglab`|
+|Securly (old)|`iheobagjkfklnlikgihanlhcddjoihkg`|
+|Goguardian|`haldlgldplgnggkjaafhelgiaglafanh`|
+|LANSchool|`baleiojnjpgeojohhhfbichcodgljmnj`|
+|Linewize|`ddfbkhpmcdbciejenfcolaaiebnjcbfc`|
+|Blocksi|`ghlpmldmjjhmdgmneoaibbegkjjbonbk`|
+|Fortiguard|`igbgpehnbmhgdgjbhkkpedommgmfbeao`|
+|Cisco Umbrella|`jcdhmojfecjfmbdpchihbeilohgnbdci`|
+|ContentKeeper|`jdogphakondfdmcanpapfahkdomaicfa`|
+|Securly Classroom|`jfbecfmiegcjddenjhlbhlikcbfmnafd`|
+|Hapara|`kbohafcopfpigkjdimdcdgenlhkmhbnc`|
+|iboss|`kmffehbidlalibfeklaefnckpidbodff`|
+|Lightspeed|`adkcpkpghahmbopkjchobieckeoaoeem`|
+|InterCLASS Filtering Service|`jbddgjglgkkneonnineaohdhabjbgopi`|
+|InterSafe GatewayConnection Agent|`ecjoghccnjlodjlmkgmnbnkdcbnjgden`|
+|Gopher Buddy|`cgbbbjmgdpnifijconhamggjehlamcif`|
+|LanSchool Web Helper|`honjcnefekfnompampcpmcdadibmjhlk`|
+|IMTLazarus|`cgigopjakkeclhggchgnhmpmhghcbnaf`|
+|Mobile Guardian|`fgmafhdohjkdhfaacgbgclmfgkgokgmb`|
+
 ## Copyright:
 This repository is licensed under the MIT License.
 
