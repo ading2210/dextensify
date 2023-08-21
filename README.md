@@ -1,6 +1,12 @@
 # Dextensify
 Dextensify is an exploit which lets you disable most admin-installed Chrome extensions from any webpage. It can be used from regular websites, HTML files, and data URLs.
 
+For the exploit itself, visit one of the following links:
+ - https://dextensify.ading.dev/
+ - https://dextensify.pages.dev/
+
+An explanation is available on [my website](https://ading.dev/blog/posts/dextensify.html).
+
 ## Copyright:
 This repository is licensed under the MIT License.
 
