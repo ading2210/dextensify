@@ -64,7 +64,6 @@
       }
     </style>
     <script>
-      let from_id = id => document.getElementById(id);
       let extensions = {
         "securly_new": {
           name: "Securly",
@@ -145,16 +144,14 @@
       };
 
       async function check_url(url) {
-        let controller = new AbortController();
-        let timeout = setTimeout(() => controller.abort(), 500);
+        let signal = AbortSignal.timeout(500);
 
         try {
-          await fetch(url, {signal: controller.signal});
+          await fetch(url, {signal});
           return true;
         }
         catch (error) {
-          let error_msg = error+"";
-          return error_msg.includes("AbortError");
+          return error.name === "AbortError";
         }
       }
       
@@ -171,7 +168,7 @@
 
       async function main() {
         let detected = await detect_extensions();
-        let buttons_container = from_id("buttons_container")
+        let buttons_container = document.getElementById("buttons_container")
 
         if (!window.chrome) {
           buttons_container.innerHTML = `<p><b>Error: You are not running a Chromium-based browser.</b></p>`;
@@ -205,7 +202,6 @@
           document.body.append(iframe);
           iframes.push(iframe);
 
-          let subframe_count = Math.max(2, 200 - iterations);
           for (let i=0; i<50; i++) {
             let subframe = document.createElement("iframe");
             subframe.src = public_url;
@@ -214,8 +210,7 @@
           }
 
           while (iframes.length > Math.max(3, 10-iterations)) {
-            iframes[0].remove();
-            iframes.shift();
+            iframes.shift().remove();
           }
 
           iterations++;
