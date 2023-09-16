@@ -28,6 +28,7 @@ An explanation is available on [my website](https://ading.dev/blog/posts/dextens
 |Gopher Buddy|`cgbbbjmgdpnifijconhamggjehlamcif`|
 |LanSchool Web Helper|`honjcnefekfnompampcpmcdadibmjhlk`|
 |IMTLazarus|`cgigopjakkeclhggchgnhmpmhghcbnaf`|
+|Impero Backdrop|`jjpmjccpemllnmgiaojaocgnakpmfgjg`|
 |Mobile Guardian|`fgmafhdohjkdhfaacgbgclmfgkgokgmb`|
 
 ## Copyright:
