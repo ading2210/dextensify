@@ -30,6 +30,7 @@ An explanation is available on [my website](https://ading.dev/blog/posts/dextens
 |IMTLazarus|`cgigopjakkeclhggchgnhmpmhghcbnaf`|
 |Impero Backdrop|`jjpmjccpemllnmgiaojaocgnakpmfgjg`|
 |Mobile Guardian|`fgmafhdohjkdhfaacgbgclmfgkgokgmb`|
+|Lanschool Air Extension for Chromebooks|`keknjhjnninjadlkapachhhjfmfnofcb`|
 
 ## Copyright:
 This repository is licensed under the MIT License.
