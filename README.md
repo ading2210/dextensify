@@ -19,6 +19,7 @@ An explanation is available on [my website](https://ading.dev/blog/posts/dextens
 |Fortiguard|`igbgpehnbmhgdgjbhkkpedommgmfbeao`|
 |Cisco Umbrella|`jcdhmojfecjfmbdpchihbeilohgnbdci`|
 |ContentKeeper|`jdogphakondfdmcanpapfahkdomaicfa`|
+|CK-Authenticator G3|`odoanpnonilogofggaohhkdkdgbhdljp`|
 |Securly Classroom|`jfbecfmiegcjddenjhlbhlikcbfmnafd`|
 |Hapara|`kbohafcopfpigkjdimdcdgenlhkmhbnc`|
 |iboss|`kmffehbidlalibfeklaefnckpidbodff`|
