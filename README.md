@@ -22,7 +22,8 @@ An explanation is available on [my website](https://ading.dev/blog/posts/dextens
 |Securly Classroom|`jfbecfmiegcjddenjhlbhlikcbfmnafd`|
 |Hapara|`kbohafcopfpigkjdimdcdgenlhkmhbnc`|
 |iboss|`kmffehbidlalibfeklaefnckpidbodff`|
-|Lightspeed|`adkcpkpghahmbopkjchobieckeoaoeem`|
+|Lightspeed Filter Agent|`adkcpkpghahmbopkjchobieckeoaoeem`|
+|Lightspeed Classroom|`kkbmdgjggcdajckdlbngdjonpchpaiea`|
 |InterCLASS Filtering Service|`jbddgjglgkkneonnineaohdhabjbgopi`|
 |InterSafe GatewayConnection Agent|`ecjoghccnjlodjlmkgmnbnkdcbnjgden`|
 |Gopher Buddy|`cgbbbjmgdpnifijconhamggjehlamcif`|
