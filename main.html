@@ -64,7 +64,7 @@
       }
     </style>
     <script>
-      let from_id = id => document.getElementById(id);
+      let from_id = document.getElementById.bind(document);
       let extensions = {
         "securly_new": {
           name: "Securly",
