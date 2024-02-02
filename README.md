@@ -27,6 +27,7 @@ An explanation is available on [my website](https://ading.dev/blog/posts/dextens
 |Lightspeed Classroom|`kkbmdgjggcdajckdlbngdjonpchpaiea`|
 |InterCLASS Filtering Service|`jbddgjglgkkneonnineaohdhabjbgopi`|
 |InterSafe GatewayConnection Agent|`ecjoghccnjlodjlmkgmnbnkdcbnjgden`|
+|ロイロWebフィルター/LoiLo Web Filters|`pabjlbjcgldndnpjnokjakbdofjgnfia`|
 |Gopher Buddy|`cgbbbjmgdpnifijconhamggjehlamcif`|
 |LanSchool Web Helper|`honjcnefekfnompampcpmcdadibmjhlk`|
 |IMTLazarus|`cgigopjakkeclhggchgnhmpmhghcbnaf`|
